@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Black Tiger</title>
+  <style>
+    /* --- BASE --- */
+    body {
+      margin: 0;
+      background-color: #0b0b0b;
+      color: #f5f5f5;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* --- HEADER --- */
+    header {
+      background: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ff4040;
+    }
+
+    /* --- MAIN --- */
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      color: #ccc;
+    }
+
+    /* --- FILTER BUTTONS --- */
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .filter-buttons button {
+      background: #222;
+      color: #f5f5f5;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .filter-buttons button:hover,
+    .filter-buttons button.active {
+      background: #ff4040;
+    }
+
+    /* --- GALLERY --- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      opacity: 0;
+      transform: scale(0.97);
+      animation: fadeIn 1s ease forwards;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .gallery img:nth-child(odd) { animation-delay: 0.2s; }
+    .gallery img:nth-child(even) { animation-delay: 0.4s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* --- LIGHTBOX --- */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeBg 0.3s ease;
+    }
+    @keyframes fadeBg {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.2);
+      animation: zoomIn 0.4s ease;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .lightbox:target {
+      display: flex;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* --- INSTAGRAM BUTTON --- */
+    .btn-insta {
+      display: inline-block;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: opacity 0.3s, transform 0.2s;
+      margin-top: 1rem;
+    }
+    .btn-insta:hover {
+      opacity: 0.85;
+      transform: scale(1.05);
+    }
+
+    /* --- HIDE --- */
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Black Tiger</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="about.html">À propos</a>
+      <a class="btn-insta" href="https://instagram.com/blacktiger._.18" target="_blank">Instagram</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Mon univers</h2>
+    <p>Explore mes clichés :</p>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <button class="active" data-filter="all">Tout</button>
+      <button data-filter="nature">Nature</button>
+      <button data-filter="urbain">Urbain</button>
+      <button data-filter="portraits">Portraits</button>
+      <button data-filter="macro">Macro</button>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery">
+      <a href="#img1"><img src="images/DSC07589.jpg" alt="Photo 1" data-category="nature"></a>
+      <a href="#img2"><img src="images/DSC07592.jpg" alt="Photo 2" data-category="urbain"></a>
+      <a href="#img3"><img src="images/DSC07595.jpg" alt="Photo 3" data-category="portraits"></a>
+      <a href="#img4"><img src="images/DSC07597.jpg" alt="Photo 4" data-category="nature"></a>
+      <a href="#img5"><img src="images/DSC07602.jpg" alt="Photo 5" data-category="macro"></a>
+      <a href="#img6"><img src="images/DSC07612.jpg" alt="Photo 6" data-category="urbain"></a>
+      <a href="#img7"><img src="images/DSC07614.jpg" alt="Photo 7" data-category="portraits"></a>
+      <a href="#img8"><img src="images/DSC07624.jpg" alt="Photo 8" data-category="nature"></a>
+      <a href="#img9"><img src="images/DSC07632.jpg" alt="Photo 9" data-category="macro"></a>
+    </div>
+  </main>
+
+  <!-- Lightbox sections -->
+  <div id="img1" class="lightbox"><a href="#"><img src="images/DSC07589.jpg" alt=""></a></div>
+  <div id="img2" class="lightbox"><a href="#"><img src="images/DSC07592.jpg" alt=""></a></div>
+  <div id="img3" class="lightbox"><a href="#"><img src="images/DSC07595.jpg" alt=""></a></div>
+  <div id="img4" class="lightbox"><a href="#"><img src="images/DSC07597.jpg" alt=""></a></div>
+  <div id="img5" class="lightbox"><a href="#"><img src="images/DSC07602.jpg" alt=""></a></div>
+  <div id="img6" class="lightbox"><a href="#"><img src="images/DSC07612.jpg" alt=""></a></div>
+  <div id="img7" class="lightbox"><a href="#"><img src="images/DSC07614.jpg" alt=""></a></div>
+  <div id="img8" class="lightbox"><a href="#"><img src="images/DSC07624.jpg" alt=""></a></div>
+  <div id="img9" class="lightbox"><a href="#"><img src="images/DSC07632.jpg" alt=""></a></div>
+
+  <footer>
+    © 2025 Black Tiger — Tous droits réservés
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-buttons button');
+    const images = document.querySelectorAll('.gallery a');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        images.forEach(img => {
+          const category = img.querySelector('img').dataset.category;
+          if (filter === 'all' || category === filter) {
+            img.classList.remove('hidden');
+          } else {
+            img.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

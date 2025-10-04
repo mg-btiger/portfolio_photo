@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos | Black Tiger</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0b0b0b;
+      color: #f5f5f5;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ff4040;
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    main img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #ff4040;
+    }
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    .btn-insta {
+      display: inline-block;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: opacity 0.3s;
+      margin-top: 1rem;
+    }
+    .btn-insta:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Black Tiger</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="about.html">À propos</a>
+      <a class="btn-insta" href="https://instagram.com/blacktiger._.18" target="_blank">Instagram</a>
+    </nav>
+  </header>
+
+  <main>
+    <img src="images/profile.jpg" alt="Portrait de Black Tiger">
+    <h2>À propos</h2>
+    <p>Salut ! Moi c’est <strong>Black Tiger</strong> 🐅 — passionnée de photo, je fais des photos de portraits, paysages, de l'urbain, animal et bien plus encore.  
+    Ce portfolio regroupe mes explorations visuelles, entre technique et émotion.</p>
+    <p>📷 Suivez mon travail sur Instagram pour découvrir mes dernières photographies.</p>
+    <a class="btn-insta" href="https://instagram.com/blacktiger._.18" target="_blank">Voir mon Insta</a>
+  </main>
+
+  <footer>
+    © 2025 Black Tiger — Tous droits réservés
+  </footer>
+</body>
+</html>
